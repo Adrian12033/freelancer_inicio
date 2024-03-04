@@ -1,0 +1,329 @@
+/*Librería de colores o también puede ser de distintos valores como por ejemplo tamaños o estilos de letras*/
+
+/*PRINCIPAL*/
+
+:root {
+    --blanco: #ffffff;
+    --oscuro: #212121;
+    --primario: #ffc107;
+    --secundario: #0097a7;
+    --gris: #757575;
+    --grisClaro: #DFE9F3;
+}
+
+/*Añadimos este estilo para que la funte tenga el mismo tamaño de manera predeterminada*/
+
+html {
+    font-size: 62.5%;
+    box-sizing: border-box;
+    /*hack para el box model*/
+    scroll-snap-type: y mandatory; /*para hacer scroll*/
+}
+
+*,
+*:before,
+*:after {
+    /*el asteriscto es un selector universal es decir selecciona todo y le aplicara el box-sizing el cual ignora el padding que le pongamos */
+    box-sizing: inherit;
+}
+
+/*Todos los cambios que realicemos en el body se aplicará a toda nuestra página*/
+
+body {
+    font-size: 16px;
+    /* 1 rem = 10 px */
+    font-family: "Anta", sans-serif;
+    background-image: linear-gradient(to top, var(--grisClaro) 0%, var(--blanco) 100%);
+    /*con esto de aqui realizamos el degradado de la página, primero indicamos la dirección donde queremos que vaya y con que color empieza el degradado, por último ponemos que color queremos que termine*/
+}
+
+.sombra {
+    -webkit-box-shadow: 10px 7px 23px -7px rgba(0, 0, 0, 0.75);
+    -moz-box-shadow: 10px 7px 23px -7px rgba(0, 0, 0, 0.75);
+    box-shadow: 10px 7px 23px -7px rgba(0, 0, 0, 0.75);
+    background-color: var(--blanco);
+    padding: 2rem;
+    border-radius: 1rem;
+}
+
+/*Creamos el contenedor para darle un tamaño a la parte de navegador, este contenedor lo podremos ir usando a lo largo de la página para darle el mismo tamaño que a la barra*/
+
+.contenedor {
+    max-width: 120rem;
+    margin: 0 auto 0 auto;
+    /*este margin funciona de la siguiente manera: el primer valor significa top, el segundo right, el tercero bottom y el ultimo left, de esta manera ahorramos mucho código*/
+}
+
+/*TEXTO*/
+
+h1 {
+    font-size: 3.8rem;
+}
+
+h2 {
+    font-size: 2.8rem;
+}
+
+h3 {
+    font-size: 1.8rem;
+}
+
+h1,h2,h3 {
+    text-align: center;
+}
+
+p{
+    text-align: justify;
+}
+
+
+/*TITULOS*/
+
+span {
+    font-size: 2rem;
+}
+
+.titulo {
+    text-align: center;
+    font-size: 3rem;
+}
+
+/*NAVEGACION*/
+
+/*Esta clase la creamos para darle un color de fondo a la etiqueta nav*/
+
+.navegacion-principal {
+    display: flex;
+    /*el flex lo usamos para colocar el html*/
+    flex-direction: column;
+}
+
+/*Para realizar cambios en los enlaces del navegador tendremos que usar la etiqueta "a" en la clase*/
+
+.navegacion-principal a {
+    display: block;
+    text-align: center;
+    color: var(--blanco);
+    text-decoration: none;
+    /*para quitar la barra del navegador usamos esta etiqueta*/
+    font-size: 2rem;
+    font-weight: bold;
+    padding: 1rem;
+}
+
+.navegacion-principal a:hover {
+    background-color: var(--primario);
+    color: var(--oscuro);
+}
+
+/*Esta otra etiqueta la creamos para que el color de fondo de la barra de navegación llegue hasta ek final de la página*/
+
+.nav-background {
+    background-color: var(--secundario);
+}
+
+/*MEDIA*/
+
+/*Los media queries, para entenderlo bien tiene que poner en la etiqueta principal lo que quieres en el móvil por ejemplo y en el media querie del móvil poner como se debe ver en una pantalla grande*/
+
+@media (min-width: 480px) {
+    /*tamaño para movil*/
+
+}
+
+@media (min-width: 768px) {
+
+    /*tamaño para tablet*/
+    .navegacion-principal {
+        flex-direction: row;
+        justify-content: space-between;
+    }
+}
+
+@media (min-width: 1140px) {
+    /*ordenador de escritorio*/
+
+}
+
+@media (min-width: 1400px) {
+    /*pantallas mas grandes*/
+
+}
+
+.hero {
+    background-image: url(Imagenes/hero.jpg);
+    background-repeat: no-repeat;
+    /*esto de aquí es para que no se repita la imagen*/
+    background-size: cover;
+    /*el cover es para que la imagen cubra toda la pagina*/
+    height: 450px;
+    position: relative;
+    /*para posicionar la etiqueta hijo*/
+    margin-bottom: 2rem;
+}
+
+/*HERO*/
+
+.contenido-hero {
+    position: absolute;
+    background-color: rgba(0, 0, 0, 0.6);
+    /*Anterior*/
+    background-color: rgb(0 0 0 / 60%);
+    /*Nuevo*/
+    /*haremos lo siguiente para la sombra de la imagen*/
+    width: 100%;
+    height: 100%;
+
+    display: flex;
+    flex-direction: column;
+    /*para alinear horizontalmente*/
+    align-items: center;
+    justify-content: center;
+    /*para alinear verticalmente*/
+}
+
+.contenido-hero h2,
+.contenido-hero p {
+    color: var(--blanco);
+}
+
+/*serES*/
+
+.boton {
+    background-color: var(--secundario);
+    color: var(--blanco);
+    padding: 1rem 3rem;
+    margin-top: 1rem;
+    font-size: 2rem;
+    text-decoration: none;  
+    text-transform: uppercase;
+    font-weight: bold;
+    border-radius: .5rem;
+    text-align: center;
+    border: none;
+}
+
+.boton:hover{
+    cursor: pointer;
+}
+/*SERVICIOS*/
+
+@media (min-width: 768px) {
+    .servicios {
+        display: grid;
+        grid-template-columns: repeat(3, 1fr); /*para definir tres columnas iguales*/
+        /*para poder hacerlo las columnas y filas sería así - grid: 200px 800px / 200px 200px 200px; */
+        /*1fr = 33.3%*/ 
+        /*grid: repeat(3, 1fr); esto de aquí es lo mismo*/
+        /*grid: 33.3% 33.3% 33.3%; esto de aquí también*/
+        column-gap: 5rem; /*separación entre columnas*/
+
+    } 
+}
+
+.servicio {
+    display: flex;
+    flex-direction: column;
+    align-items: center;
+    text-align: center;
+}
+
+.servicio h3 {
+    color: var(--secundario);
+    font-weight: bold;
+}
+
+.servicio p { 
+    line-height: 2; /*esto es para que haya espacio entre las lineas del texto*/
+}
+
+.servicio .iconos {
+    height: 15rem;
+    width: 15rem;
+    background-color: var(--primario);
+    border-radius: 50%; /*para hacer el círculo*/
+    display: flex; /*para que las imagenes se pongan al lado*/
+    justify-content: space-evenly; /*alinear horizontalmente*/
+    align-items: center; /*alinear verticalmente*/
+
+}
+
+/*FORMULARIO*/
+
+.formulario {
+    background-color: var(--gris);
+    width: min( 60rem, 100% );/*UTILIZAR EL VALOR MAS PEQUEÑO para ahorrar media queries */
+    margin: 0 auto; /*para centrar horizontalmente se usa para cuando tengamos un formulario y el padre no sea un display flex*/
+    padding: 2rem;
+    border-radius: 1rem;
+}
+
+.formulario fieldset {
+    border: none;
+}
+
+.formulario legend {
+    color: var(--primario);
+    text-align: center;
+    padding-bottom: 2rem;
+    font-size: 2rem;
+    font-weight: bold;
+}
+
+@media (min-width: 768px) {
+    .contenedor-campos {
+        display: grid;
+        grid-template-columns: repeat(2, 1fr);
+        grid-template-rows: auto auto 20rem;
+        column-gap: 1rem;
+        padding-bottom: 3rem;
+    }
+
+    .campo:nth-child(3){ /*esto es para seleccionar el tercero en el caso que la clase sean iguales*/
+        grid-column: 1 / 3;
+    }
+
+    .campo:nth-child(4){
+        grid-column: 1 / 3;
+    }
+}
+
+.campo {
+    margin-bottom: 1rem;
+}
+
+.campo label {
+    color: var(--blanco);
+    font-weight: bold;
+    margin-bottom: 0.5rem;
+    display: block; /*para que coja todo el espacio disponible*/
+}
+
+.campo textarea {
+    height: 20rem;
+}
+
+.input-text {
+    width: 100%;
+    border: none;
+    padding: 1.5rem;
+    border-radius: 0.5rem;
+}
+
+.enviar {
+    width: 100%;
+}
+
+footer p{
+    text-align: center;
+}
+
+/*SOBRE MI*/
+
+.apartados {
+    background-color: red;
+}
+
+.apartado {
+    text-align: start;
+}
